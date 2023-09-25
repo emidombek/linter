@@ -3,6 +3,7 @@ const API_URL = "https://ci-jshint.herokuapp.com/api";
 const resultsModal = new bootstrap.Modal(document.getElementById("resultsModal"));
 
 document.getElementById("status").addEventListener("click", e => getStatus(e));
+document.getElementById("submit").addEventListener("click", e => postForm(e));
 
 function processOptions(form) {
   let optArray = [];
@@ -22,7 +23,7 @@ function processOptions(form) {
 
 async function postForm(e) {
 
-  const form = new processOptions(new FormData(document.getElementById("checksform")));
+  const form = processOptions(new FormData(document.getElementById("checksform")));
 
   const response = await fetch(API_URL, {
     method: "POST",
